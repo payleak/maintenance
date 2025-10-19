@@ -1,43 +1,51 @@
-# Simple workflow for deploying static content to GitHub Pages
+# 用於部署靜態網站到 GitHub Pages 的簡易流程
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # 當推送到預設分支（main）時自動執行
   push:
     branches: ["main"]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # 允許從 Actions 頁面手動觸發此流程
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# 設定 GITHUB_TOKEN 權限以允許部署至 GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# 防止多個部署同時執行，避免衝突
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: 取得原始碼
+        uses: actions/checkout@v4
+
+      - name: 設定 GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: 建置靜態網站
+        run: |
+          # 根據你的專案修改以下指令
+          # 例如：npm install && npm run build
+          echo "未設定建置步驟，略過..."
+
+      - name: 上傳網站檔案
+        uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
+          # 如果你的網站建置輸出資料夾是 dist 或 build，請修改此路徑
           path: '.'
-      - name: Deploy to GitHub Pages
+
+      - name: 部署到 GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
