@@ -128,6 +128,52 @@
       ONEAD_text_pubs.push(ONEAD_TEXT);
     </script>
     <script src="https://ad-specs.guoshipartners.com/static/js/ad-serv.min.js"></script>
+    <div id = "oneadMFSDFPTag"></div>
+    <script type="text/javascript">
+      var custom_call = function (params) {
+        if (params.hasAd) {
+          console.log('MFS has AD')
+        } else {
+          console.log('MFS AD empty')
+        }
+      }
+      var _ONEAD = {};
+      _ONEAD.pub = {};
+      _ONEAD.pub.slotobj = document.getElementById("oneadMFSDFPTag");
+      _ONEAD.pub.slots = ["div-onead-ad"];
+      _ONEAD.pub.uid = "2000217";
+      _ONEAD.pub.external_url = "https://onead.onevision.com.tw/";
+      _ONEAD.pub.player_mode_div = "div-onead-ad";
+      _ONEAD.pub.player_mode = "mobile-fullscreen";
+      _ONEAD.pub.google_view_click = "%%CLICK_URL_UNESC%%";
+      _ONEAD.pub.google_view_pixel = "";
+      _ONEAD.pub.queryAdCallback = custom_call
+      var ONEAD_pubs = ONEAD_pubs || [];
+      ONEAD_pubs.push(_ONEAD);
+    </script>
+    <script type="text/javascript" src = "https://ad-specs.guoshipartners.com/static/js/onead-lib.min.js"></script>
+    <div id="div-onead-nd-01"></div>
+    <script type="text/javascript">
+      var custom_call = function (params) {
+          if (params.hasAd) {
+            console.log('ND has AD')
+          } else {
+            console.log('ND AD Empty');
+          }
+        }
+      ONEAD_TEXT = {};
+      ONEAD_TEXT.pub = {};
+      ONEAD_TEXT.pub.uid = "2000217";
+      ONEAD_TEXT.pub.slotobj = document.getElementById("div-onead-nd-01");
+      ONEAD_TEXT.pub.player_mode = "native-drive";
+      ONEAD_TEXT.pub.player_mode_div = "div-onead-ad";
+      ONEAD_TEXT.pub.max_threads = 3;
+      ONEAD_TEXT.pub.position_id = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)? "5" : "0";
+      ONEAD_TEXT.pub.queryAdCallback = custom_call;
+      window.ONEAD_text_pubs = window.ONEAD_text_pubs || [];
+      ONEAD_text_pubs.push(ONEAD_TEXT);
+    </script>
+    <script src="https://ad-specs.guoshipartners.com/static/js/ad-serv.min.js"></script>
     <div class="break"></div>
     <!-- announcement -->
     <article>
